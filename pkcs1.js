@@ -2,6 +2,8 @@ const crypto = window.crypto || window.msCrypto // for IE 11 compatibility
 const subtle = crypto.subtle
 
 let signature
+let keyPair
+
 
 function getMessageEncoding() {
   const messageBox = document.querySelector('#rsassa-pkcs1-message')
@@ -54,7 +56,7 @@ async function getKey() {
     ['sign', 'verify'] // can be any combination of "encrypt" and "decrypt"
   )
 }
-let keyPair
+
 async function signMessage() {
   console.log('signed called')
   keyPair = await getKey()
